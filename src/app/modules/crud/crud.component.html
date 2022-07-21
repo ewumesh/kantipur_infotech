@@ -1,0 +1,54 @@
+<div class="container">  
+    <div class="text-center">
+      <h2 >Angular CRUD Example with REDUX</h2>
+    </div>
+    <mat-card style="padding-bottom: 20px !important;">
+      <mat-card-header><h2>User(s) List <button mat-button color="primary" (click)="addNewDataInList(0)">Add New</button></h2>
+    </mat-card-header>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" [@collectionInOut]="dataSource.data?.length">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element">{{element.position}}</td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+      
+        <!-- Phone Column -->
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>Phone</th>
+          <td mat-cell *matCellDef="let element">{{element.phone}}</td>
+        </ng-container>
+      
+        <!-- Address Column -->
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <td mat-cell *matCellDef="let element">{{element.address}}</td>
+        </ng-container>
+  
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button color="primary" (click)="addNewDataInList(element.position)">Edit</button>
+            <button color="warn" mat-button (click)="deleteData(element.position)">Delete</button>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns;"
+        ></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[10,5, 3, 15, 20]"
+      showFirstLastButtons 
+      aria-label="Select page of periodic elements">
+</mat-paginator>
+    </mat-card>
+  </div>

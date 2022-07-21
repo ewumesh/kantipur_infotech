@@ -1,0 +1,32 @@
+<mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+<h2 mat-dialog-title *ngIf="data">Edit data of {{data.name}}</h2>
+<h2 mat-dialog-title *ngIf="!data">Add New List on Table</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="form" [formGroup]="dataForm" (ngSubmit)="saveChanges()" autocomplete="off">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label class="input_label">Name</mat-label>
+                    <input formControlName="name" type="text" matInput placeholder="Enter name">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label class="input_label">Phone</mat-label>
+                    <input formControlName="phone" type="text" matInput placeholder="Enter Phone no">
+                </mat-form-field>
+            </div>
+    
+            <div class="col-md-6">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label class="input_label">Address</mat-label>
+                    <input formControlName="address" type="text" matInput placeholder="Enter Address">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button [disabled]="loading" (click)="saveChanges()" mat-button cdkFocusInitial>Save</button>
+</mat-dialog-actions>

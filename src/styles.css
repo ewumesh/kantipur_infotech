@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.container {
+    margin: 0;
+    padding: 0 5%;
+}
+
+.text-center {
+    text-align: center;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.demo-table {
+    width: 100%;
+  }
+  
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+
+  /* .table,th,tr,td {
+    border: 1px solid #000;
+  } */
+
+  .success-snackbar {
+    background-color: green !important;
+  }
