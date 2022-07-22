@@ -6,10 +6,12 @@ import { MatDialog} from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { collectionInOut } from 'src/app/animation';
 import { AppService } from 'src/app/app.service';
-import { DeleteConfirmComponent } from '../shared/delete-confirm';
+import { DeleteConfirmComponent } from '../shared/confirm-box/delete-confirm';
 import { FormDialog } from './component/forms-dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -28,7 +30,8 @@ export class CrudComponent implements OnInit, AfterViewInit {
   constructor(
     private appService: AppService,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private store: Store<any>
   ) {}
 
   ngOnInit() {
@@ -37,6 +40,7 @@ export class CrudComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+     this.store.select(store => store.crud).subscribe(a => console.log(a, 'AA'))
   }
 
   getAllListOfData() {
@@ -56,9 +60,18 @@ export class CrudComponent implements OnInit, AfterViewInit {
       autoFocus: false,
     });
     instance.afterClosed().pipe(delay(500)).subscribe(v => {
-      const newData = [...v.data];
-      this.dataSource.data = newData;
-      this.dataSource._updateChangeSubscription();
+      let value = JSON.parse(JSON.stringify(v.data))
+
+      let dataExists = this.dataSource.data.find(d => d.id === value.id);
+
+      if(dataExists) {
+        let index = this.dataSource.data.findIndex(i => i.id === value.id);
+        this.dataSource.data[index] = value;
+        this.dataSource._updateChangeSubscription();
+      } else {
+        this.dataSource.data.push(value);
+        this.dataSource._updateChangeSubscription();
+      }
       console.log(this.dataSource.data, 'SYNC...', v)
 
     })
@@ -71,9 +84,8 @@ export class CrudComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
           let deleteIndex = this.dataSource.data.find(v => v.position === position);
           this.appService.deleteData(deleteIndex).subscribe(d => {
-            console.log(d, 'DEELETS');
-            const newData = [...d];
-            this.dataSource.data = newData;
+            this.dataSource.data.splice(deleteIndex, 1);
+            this.dataSource._updateChangeSubscription();
 
             this.openSnackBar('Data Deleted Successfully!', 'Ok')
           })

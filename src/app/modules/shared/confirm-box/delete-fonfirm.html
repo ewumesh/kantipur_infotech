@@ -6,9 +6,12 @@
         <h4> Are you sure about this?</h4>
     </div>
     <div style="text-align: center" class="text-center">
-        <button color="warn" mat-button  matTooltip="Delete" matTooltipPosition="left" (click)="deleted()">
+        <button *ngIf="!isWorking" color="warn" mat-button  matTooltip="Delete" matTooltipPosition="left" (click)="deleted()">
             
             Delete
+        </button>
+        <button color="warn" *ngIf="isWorking">
+            <mat-spinner color="primary" diameter="20"></mat-spinner>
         </button>
         <button mat-button color="primary" [disabled]="isWorking" matTooltip="Cancel" matTooltipPosition="right" [mat-dialog-close]="false">
             Cancel

@@ -15,11 +15,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { DeleteConfirmModule } from '../shared/delete-confirm.module';
+import { DeleteConfirmModule } from '../shared/confirm-box/delete-confirm.module';
 import { CrudComponent } from './crud.component';
 import { FormDialog } from './component/forms-dialog';
 import { RouterModule } from '@angular/router';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -42,11 +42,11 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
 
     RouterModule.forChild([
       {path: '', component: CrudComponent}
     ]),
-
     // custom  module.
     DeleteConfirmModule
   ],

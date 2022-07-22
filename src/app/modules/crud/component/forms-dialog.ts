@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -17,15 +17,12 @@ export class FormDialog implements OnInit {
     updatedValue: any[] = [];
 
     constructor(
-        public dialogRef: MatDialogRef<FormDialog>,
-        @Inject(MAT_DIALOG_DATA) public data: any,
         private fb: FormBuilder,
-
         private appService: AppService,
-        private snackBar: MatSnackBar
-    ) {
-
-    }
+        private snackBar: MatSnackBar,
+        public dialogRef: MatDialogRef<FormDialog>,
+        @Inject(MAT_DIALOG_DATA) public data: any
+    ) { }
 
     patchForm() {
         this.dataForm.patchValue({
@@ -37,12 +34,22 @@ export class FormDialog implements OnInit {
     }
 
     initForm() {
-        let rand = Math.floor(Math.random() * (9999 - 1111 + 1)) + 100;
+        let rand;
+        let id;
+        if (this.data) {
+            id = this.data.id;
+            rand = this.data.position;
+        } else {
+            rand = Math.floor(Math.random() * (9999 - 1111 + 1)) + 100;
+            id = Math.floor(Math.random() * (9999 - 1111 + 1)) + 100;
+        }
+
         this.dataForm = this.fb.group({
             position: rand,
-            name: null,
-            phone: null,
-            address: null
+            id: id,
+            name: [null, Validators.required],
+            phone: [null, Validators.required],
+            address: [null, Validators.required]
         })
     }
     openSnackBar(message: string, action: string) {
@@ -56,6 +63,14 @@ export class FormDialog implements OnInit {
 
 
     saveChanges() {
+
+        if (this.dataForm.invalid) {
+            for (const control of Object.keys(this.dataForm.controls)) {
+                this.dataForm.controls[control].markAsTouched();
+            }
+            return;
+        }
+
         this.loading = true;
         setTimeout(() => {
             if (this.data !== null) {
@@ -67,7 +82,7 @@ export class FormDialog implements OnInit {
                     this.dataForm.reset();
                 });
 
-            } else if(this.data == null) {
+            } else if (this.data == null) {
                 this.appService.addNewDataIntoList(this.dataForm.value).subscribe(data => {
                     this.updatedValue = data;
                     this.openSnackBar('New data Added Successfully!', 'ok');

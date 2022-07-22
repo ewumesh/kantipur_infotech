@@ -1,0 +1,147 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "listOfData": [
+    {
+      "id": "1213",
+      "position": 5,
+      "name": "Bijen",
+      "phone": 1234569871,
+      "address": "Kathmandu"
+    },
+    {
+      "id": "434",
+      "position": 6,
+      "name": "Sushant",
+      "phone": 1234569871,
+      "address": "Kathmandu"
+    },
+    {
+      "id": "678",
+      "position": 7,
+      "name": "Bigyan",
+      "phone": 1234569871,
+      "address": "Kathmandu"
+    },
+    {
+      "id": "8765",
+      "position": 8,
+      "name": "Deepak",
+      "phone": 1234569871,
+      "address": "Kathmandu"
+    },
+    {
+      "id": "34345",
+      "position": 9,
+      "name": "Pujan",
+      "phone": 1234569871,
+      "address": "Kathmandu"
+    },
+    {
+      "position": 3050,
+      "name": "daw",
+      "phone": "awd",
+      "address": "awd",
+      "id": "YYfnGWJ"
+    },
+    {
+      "position": 7102,
+      "name": "test",
+      "phone": "asdasd",
+      "address": "awdawd",
+      "id": "IFbe2j6"
+    },
+    {
+      "position": 6780,
+      "name": "adw",
+      "phone": "adw",
+      "address": "asdad",
+      "id": "KdrS4pq"
+    },
+    {
+      "position": 1609,
+      "name": "asdkasdj",
+      "phone": "asdasd",
+      "address": "asdasd",
+      "id": "ESdo2GN"
+    },
+    {
+      "position": 4019,
+      "name": "wad",
+      "phone": "awd",
+      "address": "asd",
+      "id": "Vu83P3G"
+    },
+    {
+      "position": 7193,
+      "name": "daww",
+      "phone": "adas",
+      "address": "sdasd",
+      "id": "QF4hmdY"
+    },
+    {
+      "position": 3073,
+      "name": "daww",
+      "phone": "awd",
+      "address": "awd",
+      "id": "hOUM1Px"
+    },
+    {
+      "position": 5873,
+      "name": "Umesh Thapa",
+      "phone": "4854566",
+      "address": "Kathmandu, Nepal",
+      "id": "Kn41aJH"
+    },
+    {
+      "position": 2087,
+      "name": "adw",
+      "phone": "as",
+      "address": "asd",
+      "id": "XQYeHuv"
+    },
+    {
+      "position": 8802,
+      "name": "Harirar Adhikari",
+      "phone": "+97986203105",
+      "address": "Nepal",
+      "id": "-ICKV2H"
+    },
+    {
+      "position": 3441,
+      "id": 1260,
+      "name": "Kaean Keaso",
+      "phone": "+965020025",
+      "address": "Seol"
+    },
+    {
+      "position": 4078,
+      "id": 3191,
+      "name": "Samantha Joy",
+      "phone": "9+3052",
+      "address": "dawdasd"
+    },
+    {
+      "position": 6816,
+      "id": 8577,
+      "name": "Sam Smith",
+      "phone": "852542178542",
+      "address": "awdawawd"
+    }
+  ]
+}
