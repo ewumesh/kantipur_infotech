@@ -2,12 +2,11 @@
   "name": "kantipur-infotech",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
     "start": "npm start --host 0.0.0.0",
-    "build": "ng build",
+    "build": "npm run build",
     "json:server": "json-server --watch db.json",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "watch": "npm run build --watch --configuration development",
+    "test": "npm run test"
   },
   "private": true,
   "dependencies": {
