@@ -18,9 +18,9 @@
   },
   "listOfData": [
     {
-      "id": "1213",
       "position": 5,
-      "name": "Bijen",
+      "id": "1213",
+      "name": "Bijen weaasd",
       "phone": 1234569871,
       "address": "Kathmandu"
     },
@@ -142,13 +142,6 @@
       "name": "Sam Smith",
       "phone": "852542178542",
       "address": "awdawawd"
-    },
-    {
-      "position": 5530,
-      "id": 4713,
-      "name": "YUSO",
-      "phone": "4124224",
-      "address": "asdasdasd"
     }
   ]
 }

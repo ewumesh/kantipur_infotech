@@ -11,24 +11,24 @@ export class AppService {
     constructor(private http: HttpClient) {}
 
     GETALLLIST(): Observable<any> {
-        return this.http.get('http://localhost:3000/listOfData')
+        return this.http.get('https://kantipurinfotech.herokuapp.com/listOfData')
     }
 
     addNewDataIntoList(data:any): Observable<any> {
         const headers = { 'content-type': 'application/json'};
         const body=JSON.stringify(data);
-        return this.http.post('http://localhost:3000/listOfData', body,{'headers':headers})
+        return this.http.post('https://kantipurinfotech.herokuapp.com/listOfData', body,{'headers':headers})
       }
 
     editData(data: any):Observable<any> {
         const headers = { 'content-type': 'application/json'};
         const body = JSON.stringify(data);
-        return this.http.put('http://localhost:3000/listOfData/'+data.id, body, {'headers':headers});
+        return this.http.put('https://kantipurinfotech.herokuapp.com/listOfData/'+data.id, body, {'headers':headers});
     }
 
     deleteData(data: any):Observable<any> {
         const headers = { 'content-type': 'application/json'};
-        return this.http.delete('http://localhost:3000/listOfData/'+data.id, {'headers':headers});
+        return this.http.delete('https://kantipurinfotech.herokuapp.com/listOfData/'+data.id, {'headers':headers});
     }
 
 }
